@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job-Freak Assignment</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    body {
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #left-panel {
+      width: 200px;
+      background-color: #f1f1f1;
+      padding: 10px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      font-family: 'Ubuntu', sans-serif;
+    }
+    
+    #content {
+      flex: 1;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    
+    .component {
+      cursor: pointer;
+      padding: 5px;
+      font-size: 22px;
+      font-weight: 400;
+    }
+    
+    .component:hover {
+      background-color: #ddd;
+    }
+    
+    .active {
+      font-weight: 500;
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    function showContent(component) {
+      var components = document.getElementsByClassName('component');
+      for (var i = 0; i < components.length; i++) {
+        components[i].classList.remove('active');
+      }
+      component.classList.add('active');
+      
+      var content = document.getElementById('content');
+      var componentName = component.textContent.toLowerCase();
+      if (componentName === 'home') {
+        content.innerHTML = '<h2>Home Content</h2><p>Welcome to the Home page!</p>';
+      } else if (componentName === 'contact') {
+        content.innerHTML = '<h2>Contact Content</h2><div class="flex items-center justify-center h-full"><div class="w-64 h-64 bg-gray-200">Sample Map</div></div><p>Address: 123 Main Street, City, Country</p>';
+      } else if (componentName === 'information') {
+        content.innerHTML = '<h2>Information Content</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at turpis eu nisi consectetur elementum. Donec nec enim id arcu gravida sagittis in sit amet magna. Ut id erat aliquet, pretium velit sit amet, lobortis lacus. Curabitur laoreet hendrerit urna, non iaculis tellus lacinia nec. Pellentesque in placerat tellus. Donec ac nibh enim. Quisque eleifend ultricies neque, id congue enim aliquet sed. Ut accumsan nulla sed neque elementum, nec venenatis orci fermentum. Sed vestibulum velit eget lacus malesuada, nec convallis ex tristique. Phasellus a tincidunt tellus.</p>';
+      } else if (componentName === 'guide') {
+        content.innerHTML = '<h2>Guide Content</h2><p>Step-by-step guide goes here.</p>';
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="left-panel">
+    <div class="component" onclick="showContent(this)">Home</div>
+    <div class="component" onclick="showContent(this)">Contact</div>
+    <div class="component" onclick="showContent(this)">Information</div>
+    <div class="component" onclick="showContent(this)">Guide</div>
+  </div>
+  <div id="content" class="bg-gray-100 text-gray-800">
+    <h2>Default Content</h2>
+    <p>Select a component from the left panel to display its content here.</p>
+  </div>
+</body>
+</html>
